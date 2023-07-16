@@ -3,25 +3,27 @@ import java.io.InputStreamReader;
 
 public class Main_1919_애너그램만들기 {
 	public static void main(String[] args) throws Exception {
+
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		String word1 = br.readLine();
-		String word2 = br.readLine();
-	
-		char[] arr1 = new char[26];
-		char[] arr2 = new char[26];
-	
-		for(int i=0;i<word1.length();i++) {
-			arr1[word1.charAt(i) - 97]++;
+		char[] word1 = br.readLine().toCharArray();
+		char[] word2 = br.readLine().toCharArray();
+
+		int[] alphabet1 = new int[26];
+		int[] alphabet2 = new int[26];
+
+		for(char ch : word1) {
+			alphabet1[ch - 97]++;
 		}
 		
-		for(int i=0;i<word2.length();i++) {
-			arr2[word2.charAt(i) - 97]++;
+		for(char ch : word2) {
+			alphabet2[ch - 97]++;
 		}
 		
 		int diff = 0;
 		for(int i=0;i<26;i++) {
-			diff += Math.abs(arr1[i] - arr2[i]);
+			if(alphabet1[i] != alphabet2[i]) {
+				diff += alphabet1[i] > alphabet2[i] ? (alphabet1[i] - alphabet2[i]) : (alphabet2[i] - alphabet1[i]);  
+			}
 		}
 		
 		System.out.print(diff);
