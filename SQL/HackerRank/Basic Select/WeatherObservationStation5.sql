@@ -1,0 +1,15 @@
+(SELECT T1.CITY
+       , T1.LEN
+FROM   (SELECT CITY             AS CITY
+              , LENGTH(CITY)     AS LEN
+        FROM   STATION
+        ORDER BY LENGTH(CITY) ASC, CITY) T1
+WHERE   ROWNUM = 1
+UNION ALL
+SELECT T2.CITY
+      , T2.LEN
+FROM   (SELECT CITY             AS CITY
+              , LENGTH(CITY)     AS LEN
+        FROM   STATION
+        ORDER BY LENGTH(CITY) DESC, CITY) T2
+WHERE   ROWNUM = 1);
