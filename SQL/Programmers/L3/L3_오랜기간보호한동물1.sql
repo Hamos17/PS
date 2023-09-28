@@ -1,0 +1,13 @@
+-- 코드를 입력하세요
+SELECT NAME
+     , DATETIME
+FROM    (SELECT INS.NAME             AS NAME
+              , INS.DATETIME         AS DATETIME
+        FROM   ANIMAL_INS INS
+        LEFT OUTER JOIN ANIMAL_OUTS OUT
+        ON     OUT.ANIMAL_ID = INS.ANIMAL_ID
+        WHERE  1 = 1
+        AND    OUT.ANIMAL_ID IS NULL
+        ORDER BY DATETIME ASC)
+WHERE 1 = 1
+AND   ROWNUM <= 3;

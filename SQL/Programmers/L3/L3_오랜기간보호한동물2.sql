@@ -1,0 +1,12 @@
+-- 코드를 입력하세요
+SELECT ANIMAL_ID
+     , NAME
+FROM    (SELECT INS.ANIMAL_ID        AS ANIMAL_ID
+              , INS.NAME             AS NAME
+         FROM   ANIMAL_INS INS
+         INNER JOIN ANIMAL_OUTS OUT
+         ON     OUT.ANIMAL_ID = INS.ANIMAL_ID
+         WHERE  1 = 1
+         ORDER BY OUT.DATETIME - INS.DATETIME DESC)
+WHERE 1 = 1
+AND   ROWNUM <= 2;
